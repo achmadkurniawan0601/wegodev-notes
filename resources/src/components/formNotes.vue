@@ -28,12 +28,7 @@ export default {
 
         propUpdateNote:{
             type: Function
-        },
-
-         propRemoveNote:{
-            type: Function
-        }  
-
+        }
     },
     data: function(){
         return{
@@ -54,7 +49,9 @@ export default {
         },
 
         submitRemove(){
-            this.propRemoveNote(this.id);
+            // this.propRemoveNote(this.id); penyebab data tidak terhapus dari list
+            let data = {id : this.id}
+            this.$root.$emit('emitRemoveNote', data)
             this.resetInput();
         },
 
